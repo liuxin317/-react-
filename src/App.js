@@ -6,7 +6,7 @@ import B from './components/B';
 
 class App extends Component {
   state = {
-    loading: true
+    loading: false
   }
 
   render() {
