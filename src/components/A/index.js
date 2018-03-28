@@ -6,10 +6,6 @@ const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
 
 export default class A extends Component {
-  componentDidMount () {
-    console.log(this.props)
-  }
-
   render () {
     return (
       <Layout>
