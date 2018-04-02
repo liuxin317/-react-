@@ -11,7 +11,7 @@ const fetchFriends = (params, type) => dispatch => {
   })
 }
 
-// 设置Cookie
+// 获取Cookie
 function getCookie(name)
 {
     var arr=document.cookie.split('; ');
@@ -30,7 +30,7 @@ function getCookie(name)
     return '';
 }
 
-// 获取cookie;
+// 设置cookie;
 function setCookie(name, value, iDay) {
     var oDate=new Date();
 

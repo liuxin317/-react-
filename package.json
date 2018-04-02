@@ -107,7 +107,7 @@
     "extends": "react-app"
   },
   "proxy": {
-    "/": {
+    "/code": {
       "target": "https://23.83.234.121:8443",
       "changeOrigin": true,
       "secure": false
