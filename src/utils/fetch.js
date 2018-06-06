@@ -1,5 +1,5 @@
 import { message } from 'antd';
-import Types from '../action/Type';
+import name from '../action/name';
 import Store from '../store';
 
 // 格式化请求参数
@@ -18,14 +18,14 @@ function formatParam(param = {}) {
 
 /**
  * 
- * @url {*请求的地址} url 
- * @method {*请求的方式，POST, GET} method 
- * @param {*请求参数} params 
- * @successBack {*成功的回调} successBack 
- * @errorBack {*失败的回调} errorBack 
+ * @url {*请求的地址} url
+ * @method {*请求的方式，POST, GET} method
+ * @param {*请求参数} params
+ * @successBack {*成功的回调} successBack
+ * @errorBack {*失败的回调} errorBack
  */
 function httpRequest (url, method, params, successBack, errorBack = null) {
-    Store.dispatch({ type: Types.LOAD_STATE, payload: { loading: true } });
+    Store.dispatch({ type: name['LOAD_STATE'], payload: { loading: true } });
 
     let newOptions = {};
 
@@ -47,12 +47,12 @@ function httpRequest (url, method, params, successBack, errorBack = null) {
         return response.json();
     })
     .then(data => {
-        Store.dispatch({ type: Types.LOAD_STATE, payload: { loading: false } });
+        Store.dispatch({ type: name['LOAD_STATE'], payload: { loading: false } });
 
         successBack && successBack(data);
     })
     .catch(error => {
-        Store.dispatch({ type: Types.LOAD_STATE, payload: { loading: false } });
+        Store.dispatch({ type: name['LOAD_STATE'], payload: { loading: false } });
 
         message.error('喔唷，崩溃啦！');
         errorBack && errorBack();

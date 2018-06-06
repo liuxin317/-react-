@@ -1,4 +1,4 @@
-import HttpRequest from '../../requset/Fetch';
+import HttpRequest from '@/utils/Fetch';
 
 /**
  * 异步发起action公共方法

@@ -1,22 +1,9 @@
 import React, { Component } from 'react';
-import { Button, Spin } from 'antd';
-import loadable from 'react-loadable'; // 代码的拆分和懒加载
+import {HashRouter as Router, Link} from 'react-router-dom';
+import { Button } from 'antd';
+import HttpRequest from './utils/fetch';
+import ViewRoute from './router';
 import Loading from './components/common/Loading';
-import PreLoading from './components/common/Preloading';
-import { connect } from 'react-redux'; // 容器组件;
-import Type from './action/Type';
-import HttpRequest from './requset/Fetch';
-import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
-
-const loadableA = loadable({
-  loader: () => import('./components/A'),
-  loading: Loading
-})
-
-const loadableB = loadable({
-  loader: () => import('./components/B'),
-  loading: Loading
-})
 
 class App extends Component {
   componentDidMount () {
@@ -28,15 +15,11 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <section className="box load-style">
-            <Route exact path="/" component={ loadableA } />
-            <Route path="/a" component={ loadableA } />
-            <Route path="/b" component={ loadableB } />
-
-            <Link to={{pathname: "/a", state: "我是A"}}><Button>到A</Button></Link>
-            <Link to={{pathname: "/b", state: "我是B"}} style={{ margin: "0 10px" }}><Button>到B</Button></Link>
-            {/* <Button onClick={hideLoadClick}>蒙板消失</Button> */}
-            <Loading />
+        <section className="box">
+          <Loading />
+          <ViewRoute />
+          <Link to={{pathname: "/a", state: "我是A"}}><Button>到A</Button></Link>
+          <Link to={{pathname: "/b", state: "我是B"}} style={{ margin: "0 10px" }}><Button>到B</Button></Link>
         </section>
       </Router>
     )
@@ -51,7 +34,7 @@ class App extends Component {
 
 // const mapDispatchToProps = (dispatch) => {
 //   return {
-//     hideLoadClick: () => { dispatch({ type: Type.LOAD_STATE, payload: { loading: false } }) }
+//     hideLoadClick: () => { dispatch({ type: name.LOAD_STATE, payload: { loading: false } }) }
 //   }
 // }
 
